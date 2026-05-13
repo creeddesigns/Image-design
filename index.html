@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PrecisionPixels | Pro Photo Editing</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0c15;
+            color: #f1f5f9;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* dynamic theme variables — will be updated by JS */
+        :root {
+            --theme-primary: #0B2F5E;
+            --theme-accent: #D4AF37;
+            --theme-glow: rgba(212, 175, 55, 0.4);
+            --theme-card-bg: rgba(15, 25, 40, 0.75);
+            --theme-gradient-start: #0B2F5E;
+            --theme-gradient-end: #1a3a5e;
+        }
+
+        h1, h2, h3, .logo, .testimonial-name {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* glassmorphism nav */
+        .navbar {
+            background: rgba(10, 14, 23, 0.75);
+            backdrop-filter: blur(16px);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, var(--theme-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: all 0.3s;
+        }
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--theme-accent);
+        }
+        .btn-outline-light {
+            border: 1.5px solid var(--theme-accent);
+            padding: 8px 24px;
+            border-radius: 40px;
+            background: transparent;
+            color: var(--theme-accent);
+            font-weight: 600;
+        }
+        .btn-outline-light:hover {
+            background: var(--theme-accent);
+            color: #0a0c15;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 110px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff, var(--theme-accent), #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+        }
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--theme-accent), color-mix(in srgb, var(--theme-accent) 70%, #000));
+            color: #0a0c15;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.25s, box-shadow 0.25s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+        }
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+        .btn-call {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+        }
+        .btn-call:hover {
+            background: var(--theme-accent);
+            color: #0a0c15;
+            border-color: var(--theme-accent);
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 20px;
+        }
+        .service-card {
+            background: var(--theme-card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.35s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--theme-accent);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+        }
+        .card-img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            transition: 0.4s;
+            display: block;
+        }
+        .card-content {
+            padding: 28px;
+        }
+        .service-icon {
+            font-size: 2.2rem;
+            color: var(--theme-accent);
+            margin-bottom: 14px;
+        }
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        .sample-edit {
+            background: rgba(0,0,0,0.35);
+            padding: 16px;
+            border-radius: 20px;
+            margin-top: 20px;
+            border-left: 3px solid var(--theme-accent);
+            font-size: 0.85rem;
+        }
+        .before-img { color: #f97316; font-weight: 600; }
+        .after-img { color: #4ade80; font-weight: 600; }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: rgba(0,0,0,0.2);
+            border-radius: 48px;
+            margin: 20px 0;
+        }
+        .testimonial-slider {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: rgba(20, 28, 40, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 42px 32px;
+            text-align: center;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+        .testimonial-avatar-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--theme-accent);
+            margin-bottom: 20px;
+        }
+        .testimonial-text {
+            font-size: 1.15rem;
+            font-style: italic;
+            margin: 20px 0;
+            color: #cbd5e6;
+        }
+        .dot-container {
+            text-align: center;
+            margin-top: 28px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #475569;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .dot.active {
+            background: var(--theme-accent);
+            width: 28px;
+            border-radius: 12px;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .contact-info, .form-card {
+            background: rgba(20, 28, 40, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 36px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin: 28px 0;
+        }
+        .contact-detail i {
+            font-size: 1.8rem;
+            color: var(--theme-accent);
+        }
+        .contact-detail a {
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-detail a:hover {
+            color: var(--theme-accent);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 28px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid #334155;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--theme-accent);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--theme-accent), color-mix(in srgb, var(--theme-accent) 70%, #000));
+            color: #0a0c15;
+            font-weight: bold;
+            padding: 14px;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            transition: 0.2s;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.03);
+        }
+        footer {
+            background: rgba(0,0,0,0.4);
+            text-align: center;
+            padding: 48px 0 36px;
+            margin-top: 60px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--theme-accent);
+            text-decoration: none;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #fff, var(--theme-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        section {
+            padding: 80px 0;
+        }
+        @media (max-width: 800px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.4rem; }
+            .container { padding: 0 20px; }
+        }
+        .glow-accent {
+            text-shadow: 0 0 6px var(--theme-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <div class="logo">PRECISION<span style="color:var(--theme-accent);">PIXELS</span></div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact" class="btn-outline-light"><i class="fas fa-camera"></i> Free Trial</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Where Pixels<br>Become Art.</h1>
+            <div class="hero-tagline">Professional photo editing for creators, brands, and storytellers — fast, flawless, and creative.</div>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary"><i class="fas fa-magic"></i> Free Sample Edit</a>
+                <a href="https://wa.me/0709298041" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="tel:0707356368" class="btn-call"><i class="fas fa-phone-alt"></i> Call Direct</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Precision Editing <span style="color:var(--theme-accent);">Suites</span></h2>
+            <div class="cards-grid">
+                <!-- Professional portrait retouching -->
+                <div class="service-card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500&h=350&fit=crop" alt="Professional portrait editing" loading="lazy">
+                    <div class="card-content">
+                        <div class="service-icon"><i class="fas fa-user-check"></i></div>
+                        <h3>High-End Retouching</h3>
+                        <p>Dodge & burn, frequency separation, natural skin — editorial quality.</p>
+                        <div class="sample-edit">
+                            <span class="before-img">▼ BEFORE:</span> Blemishes, uneven tones, tired look<br>
+                            <span class="after-img">▲ AFTER:</span> Flawless skin, catchlights, vibrant & real
+                        </div>
+                    </div>
+                </div>
+                <!-- Background Removal - IMPROVED IMAGE: clean product with clipping path demonstration -->
+                <div class="service-card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&h=350&fit=crop" alt="Professional product cutout and background removal" loading="lazy">
+                    <div class="card-content">
+                        <div class="service-icon"><i class="fas fa-cut"></i></div>
+                        <h3>Background Removal</h3>
+                        <p>Clean cutouts, complex hair masking, pure white or creative scenery.</p>
+                        <div class="sample-edit">
+                            <span class="before-img">▼ ORIGINAL:</span> Cluttered background, messy edges<br>
+                            <span class="after-img">▲ AFTER:</span> Perfect transparency / custom backdrop
+                        </div>
+                    </div>
+                </div>
+                <!-- Cinematic Color Grading -->
+                <div class="service-card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=500&h=350&fit=crop" alt="Cinematic color grading" loading="lazy">
+                    <div class="card-content">
+                        <div class="service-icon"><i class="fas fa-palette"></i></div>
+                        <h3>Color Grading</h3>
+                        <p>Cinematic moods, brand consistency, teal/orange, vintage or modern.</p>
+                        <div class="sample-edit">
+                            <span class="before-img">▼ FLAT LOG:</span> Dull, low contrast, lifeless<br>
+                            <span class="after-img">▲ GRADED:</span> Rich shadows, golden highlights, depth
+                        </div>
+                    </div>
+                </div>
+                <!-- Real Estate HDR -->
+                <div class="service-card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=350&fit=crop" alt="Real estate HDR editing" loading="lazy">
+                    <div class="card-content">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>Real Estate / HDR</h3>
+                        <p>Twilight conversion, perspective fix, window pull, sky replacement.</p>
+                        <div class="sample-edit">
+                            <span class="before-img">▼ BEFORE:</span> Dark windows, crooked lines, dull sky<br>
+                            <span class="after-img">▲ AFTER:</span> Bright interior, straight lines, stunning sky
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Trusted by <span style="color:var(--theme-accent);">Professionals</span></h2>
+            <div class="testimonial-slider">
+                <div id="testimonialContainer" class="testimonial-card"></div>
+                <div class="dot-container" id="dotsContainer"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Perfect <span style="color:var(--theme-accent);">Your Images</span></h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;"><i class="fas fa-headset"></i> 24/7 Creative Support</h3>
+                    <div class="contact-detail"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/0709298041" target="_blank">+254 709 298 041 (WhatsApp)</a></div>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i> <a href="mailto:creedwhite250@gmail.com">creedwhite250@gmail.com</a></div>
+                    <div class="contact-detail"><i class="fas fa-phone-alt"></i> <a href="tel:0707356368">📞 +254 707 356 368 (Call / SMS)</a></div>
+                    <div class="contact-detail"><i class="fas fa-clock"></i> <span>Fast turnaround • Free sample edit • Confidential</span></div>
+                </div>
+                <div class="form-card">
+                    <form id="simpleContactForm">
+                        <div class="form-group"><input type="text" id="nameInput" placeholder="Full name *" required></div>
+                        <div class="form-group"><input type="email" id="emailInput" placeholder="Email address *" required></div>
+                        <div class="form-group"><textarea rows="4" id="msgInput" placeholder="Describe your project: portraits, e-commerce, real estate..."></textarea></div>
+                        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request Free Quote</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="font-size: 1.6rem;">PRECISION<span style="color:var(--theme-accent);">PIXELS</span></div>
+            <div class="footer-links">
+                <a href="#services">Editing Services</a>
+                <a href="#testimonials">Success Stories</a>
+                <a href="#contact">Free Trial</a>
+                <a href="#" id="scrollTop">Back to Top</a>
+            </div>
+            <div class="copyright">© 2025 PrecisionPixels — Where every pixel tells your story. Professional photo editing for the modern creator.</div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== AUTO COLOR THEMES (smooth gradient cycling) ==========
+        const colorSchemes = [
+            { primaryStart: "#0B2F5E", primaryEnd: "#1a4a7a", accent: "#D4AF37", cardBg: "rgba(15, 25, 40, 0.75)", glow: "rgba(212, 175, 55, 0.4)" },
+            { primaryStart: "#2C3E50", primaryEnd: "#4A627A", accent: "#E67E22", cardBg: "rgba(25, 35, 50, 0.75)", glow: "rgba(230, 126, 34, 0.4)" },
+            { primaryStart: "#1E1B4B", primaryEnd: "#3B2F6B", accent: "#F59E0B", cardBg: "rgba(20, 18, 40, 0.8)", glow: "rgba(245, 158, 11, 0.4)" },
+            { primaryStart: "#0F172A", primaryEnd: "#2D3A5E", accent: "#38BDF8", cardBg: "rgba(15, 23, 42, 0.75)", glow: "rgba(56, 189, 248, 0.4)" },
+            { primaryStart: "#1E2A3A", primaryEnd: "#2A3F5E", accent: "#F97316", cardBg: "rgba(20, 30, 44, 0.75)", glow: "rgba(249, 115, 22, 0.4)" },
+            { primaryStart: "#2D1B36", primaryEnd: "#4B2A4A", accent: "#C084FC", cardBg: "rgba(30, 20, 40, 0.75)", glow: "rgba(192, 132, 252, 0.4)" }
+        ];
+        
+        let themeIndex = 0;
+        let intervalId;
+        
+        function applySmoothTheme(index) {
+            const scheme = colorSchemes[index % colorSchemes.length];
+            const root = document.documentElement;
+            // smooth transition for background
+            document.body.style.transition = "background 1.2s ease, color 0.5s";
+            document.body.style.background = `linear-gradient(135deg, ${scheme.primaryStart} 0%, ${scheme.primaryEnd} 100%)`;
+            root.style.setProperty('--theme-primary', scheme.primaryStart);
+            root.style.setProperty('--theme-accent', scheme.accent);
+            root.style.setProperty('--theme-glow', scheme.glow);
+            root.style.setProperty('--theme-card-bg', scheme.cardBg);
+            
+            // update dynamic gradients on elements that need explicit refresh
+            const heroTitle = document.querySelector('.hero h1');
+            if(heroTitle) {
+                heroTitle.style.background = `linear-gradient(135deg, #ffffff, ${scheme.accent}, #c084fc)`;
+                heroTitle.style.webkitBackgroundClip = 'text';
+                heroTitle.style.color = 'transparent';
+            }
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                title.style.background = `linear-gradient(135deg, #fff, ${scheme.accent})`;
+                title.style.webkitBackgroundClip = 'text';
+                title.style.color = 'transparent';
+            });
+            const logoEl = document.querySelector('.logo');
+            if(logoEl) {
+                logoEl.style.background = `linear-gradient(135deg, #fff, ${scheme.accent})`;
+                logoEl.style.webkitBackgroundClip = 'text';
+            }
+            const btns = document.querySelectorAll('.btn-primary, .btn-submit');
+            btns.forEach(btn => {
+                btn.style.background = `linear-gradient(135deg, ${scheme.accent}, color-mix(in srgb, ${scheme.accent} 70%, #000))`;
+            });
+            // also style outline button border
+            const outlineBtn = document.querySelector('.btn-outline-light');
+            if(outlineBtn) {
+                outlineBtn.style.borderColor = scheme.accent;
+                outlineBtn.style.color = scheme.accent;
+            }
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach(dot => {
+                if(dot.classList.contains('active')) dot.style.background = scheme.accent;
+                else dot.style.background = '#475569';
+            });
+            // store current theme index in localStorage for persistence
+            localStorage.setItem('autoThemeIndex', index);
+        }
+        
+        function startAutoThemeCycle() {
+            if(intervalId) clearInterval(intervalId);
+            intervalId = setInterval(() => {
+                themeIndex = (themeIndex + 1) % colorSchemes.length;
+                applySmoothTheme(themeIndex);
+            }, 5500); // gentle every 5.5 seconds
+        }
+        
+        // load saved or start fresh
+        const savedThemeIndex = localStorage.getItem('autoThemeIndex');
+        if(savedThemeIndex !== null) {
+            themeIndex = parseInt(savedThemeIndex);
+            applySmoothTheme(themeIndex);
+        } else {
+            applySmoothTheme(0);
+        }
+        startAutoThemeCycle();
+        
+        // ========== TESTIMONIALS with professional unsplash-like avatar images ==========
+        const testimonials = [
+            { name: "Elena Vasquez", role: "Creative Director", text: "PrecisionPixels turned my dull product photos into high-end catalog shots. The color grading is superb and turnaround time insane!", avatarImg: "https://randomuser.me/api/portraits/women/65.jpg" },
+            { name: "James Mwangi", role: "Commercial Photographer", text: "Outsourcing retouching to them was the best decision. Skin work is natural, files delivered perfectly. My clients are always thrilled.", avatarImg: "https://randomuser.me/api/portraits/men/52.jpg" },
+            { name: "Sophia Chen", role: "E-commerce Brand Owner", text: "Background removal and shadow creation on 500+ images — flawless and consistent. They even went the extra mile with lighting fixes.", avatarImg: "https://randomuser.me/api/portraits/women/33.jpg" }
+        ];
+        
+        let currentTestimonial = 0;
+        const testimonialContainer = document.getElementById('testimonialContainer');
+        const dotsContainerEl = document.getElementById('dotsContainer');
+        
+        function renderTestimonial(idx) {
+            const t = testimonials[idx];
+            testimonialContainer.innerHTML = `
+                <img class="testimonial-avatar-img" src="${t.avatarImg}" alt="${t.name}" loading="lazy">
+                <div class="testimonial-text">“${t.text}”</div>
+                <div class="testimonial-name" style="font-size:1.3rem;">${t.name}</div>
+                <div class="testimonial-role">${t.role}</div>
+            `;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                if(i === idx) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+        
+        function createDots() {
+            dotsContainerEl.innerHTML = '';
+            testimonials.forEach((_, idx) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if(idx === currentTestimonial) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentTestimonial = idx;
+                    renderTestimonial(currentTestimonial);
+                });
+                dotsContainerEl.appendChild(dot);
+            });
+        }
+        
+        createDots();
+        renderTestimonial(0);
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            renderTestimonial(currentTestimonial);
+        }, 6000);
+        
+        // Contact form popup
+        const form = document.getElementById('simpleContactForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('nameInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            if(!name || !email) {
+                alert("Please enter both name and email.");
+                return;
+            }
+            if(!email.includes('@')) {
+                alert("Valid email required.");
+                return;
+            }
+            alert("✨ Thanks! I'll reply within 24h with your free sample edit & custom quote.");
+            form.reset();
+        });
+        
+        // smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        document.getElementById('scrollTop')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // ensure theme updates keep accent for new dynamically added elements if needed
+        window.addEventListener('load', () => {
+            applySmoothTheme(themeIndex);
+        });
+    </script>
+</body>
+      </html>
