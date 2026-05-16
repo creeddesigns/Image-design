@@ -1,9 +1,9 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>PrecisionPixels | AI-Powered Photo Editing</title>
+    <title>PrecisionPixels | Professional Photo Editing Studio</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
@@ -98,7 +98,7 @@
         .hero h1 {
             font-size: 3.6rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #ffffff, var(--theme-accent), #ec4899);
+            background: linear-gradient(135deg, #ffffff, var(--theme-accent), #c084fc);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -164,23 +164,27 @@
             color: #0a0c15;
         }
 
-        /* Viral Banner */
-        .viral-banner {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            padding: 24px;
-            border-radius: 60px;
-            text-align: center;
-            margin: 40px 0;
+        /* Trust Badge */
+        .trust-badge {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 50px 0 20px;
         }
-        .viral-banner i {
-            font-size: 2rem;
-            margin-right: 12px;
+        .trust-badge span {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        .trust-badge i {
+            color: var(--theme-accent);
+            margin-right: 8px;
         }
 
         /* Before/After Comparison Cards */
         .compare-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 32px;
             margin-top: 20px;
         }
@@ -202,7 +206,7 @@
         }
         .compare-img {
             width: 50%;
-            height: 260px;
+            height: 280px;
             object-fit: cover;
         }
         .compare-label {
@@ -212,8 +216,9 @@
             background: rgba(0,0,0,0.7);
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: bold;
+            letter-spacing: 0.5px;
         }
         .compare-label.right {
             left: auto;
@@ -222,6 +227,10 @@
         .compare-card .card-content {
             padding: 24px;
             text-align: center;
+        }
+        .compare-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
         }
 
         /* Services Grid */
@@ -235,7 +244,7 @@
             background: var(--theme-card-bg);
             backdrop-filter: blur(12px);
             border-radius: 28px;
-            padding: 28px;
+            padding: 32px 24px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
@@ -252,6 +261,10 @@
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 12px;
+        }
+        .service-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
         }
 
         /* Testimonials */
@@ -278,6 +291,7 @@
             font-size: 1.1rem;
             font-style: italic;
             margin: 20px 0;
+            color: #cbd5e1;
         }
         .dot {
             width: 10px;
@@ -346,6 +360,7 @@
             cursor: pointer;
             width: 100%;
             border: none;
+            margin-top: 8px;
         }
         footer {
             background: rgba(0,0,0,0.4);
@@ -380,17 +395,9 @@
             .hero h1 { font-size: 2.2rem; }
             .compare-img { height: 200px; }
         }
-        .tiktok-tag {
-            display: inline-block;
-            background: #000;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: bold;
+        hr {
+            border-color: #334155;
             margin: 20px 0;
-        }
-        .tiktok-tag i {
-            color: #25F4EE;
         }
     </style>
 </head>
@@ -400,70 +407,69 @@
         <div class="container nav-flex">
             <div class="logo">PRECISION<span style="color:var(--theme-accent);">PIXELS</span></div>
             <div class="nav-links">
+                <a href="#work">Portfolio</a>
                 <a href="#services">Services</a>
-                <a href="#results">Results</a>
-                <a href="#contact" class="btn-outline-light"><i class="fab fa-tiktok"></i> Viral Edit</a>
+                <a href="#contact" class="btn-outline-light"><i class="fas fa-star"></i> Free Sample</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <h1>Turn Your Selfie Into<br>An AI Masterpiece</h1>
-            <div class="hero-tagline">The viral TikTok AI edit everyone's talking about — professional retouching that looks like magic.</div>
+            <h1>Professional Editing.<br>Flawless Results.</h1>
+            <div class="hero-tagline">Premium photo retouching for portraits, products, and brands — handcrafted by experts.</div>
             <div class="hero-buttons">
-                <a href="#contact" class="btn-primary"><i class="fas fa-magic"></i> Try AI Edit Free</a>
+                <a href="#contact" class="btn-primary"><i class="fas fa-image"></i> Free Sample Edit</a>
                 <a href="https://wa.me/0709298041" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="tel:0707356368" class="btn-call"><i class="fas fa-phone-alt"></i> Call Now</a>
+                <a href="tel:0707356368" class="btn-call"><i class="fas fa-phone-alt"></i> Call Direct</a>
             </div>
-            <div class="viral-banner">
-                <i class="fab fa-tiktok"></i> <strong>🔥 VIRAL ON TIKTOK 🔥</strong> — 5M+ views | "This AI edit is insane!"
+            <div class="trust-badge">
+                <span><i class="fas fa-check-circle"></i> 500+ Projects Completed</span>
+                <span><i class="fas fa-star"></i> 100% Satisfaction</span>
+                <span><i class="fas fa-clock"></i> 24h Turnaround</span>
             </div>
         </div>
     </header>
 
-    <!-- BEFORE & AFTER SHOWCASE (AI-Style Edits) -->
-    <section id="results">
+    <!-- BEFORE & AFTER SHOWCASE -->
+    <section id="work">
         <div class="container">
-            <h2 class="section-title">👑 Real Results: <span style="color:var(--theme-accent);">AI-Powered Transformations</span></h2>
+            <h2 class="section-title">Real Work.<span style="color:var(--theme-accent);"> Real Transformations.</span></h2>
             <div class="compare-grid">
                 <div class="compare-card">
                     <div class="compare-images">
                         <img class="compare-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop" alt="Before">
-                        <span class="compare-label">📸 BEFORE</span>
+                        <span class="compare-label">ORIGINAL</span>
                         <img class="compare-img" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=400&fit=crop" alt="After">
-                        <span class="compare-label right">✨ AFTER (AI Edit)</span>
+                        <span class="compare-label right">RETOUCHED</span>
                     </div>
                     <div class="card-content">
-                        <h3>Sarah's Transformation</h3>
-                        <p>"I cried when I saw the result! This is what I wish I looked like everyday 🔥"</p>
-                        <small><i class="fab fa-tiktok"></i> 2.3M views</small>
+                        <h3>Portrait Retouching</h3>
+                        <p>Natural skin smoothing • Dodging & burning • Color grading</p>
                     </div>
                 </div>
                 <div class="compare-card">
                     <div class="compare-images">
                         <img class="compare-img" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" alt="Before">
-                        <span class="compare-label">📸 BEFORE</span>
+                        <span class="compare-label">ORIGINAL</span>
                         <img class="compare-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="After">
-                        <span class="compare-label right">✨ AFTER (AI Edit)</span>
+                        <span class="compare-label right">RETOUCHED</span>
                     </div>
                     <div class="card-content">
-                        <h3>Mike's Glow Up</h3>
-                        <p>"Went from average to model status. The AI smoothing is unreal."</p>
-                        <small><i class="fab fa-tiktok"></i> 1.8M views</small>
+                        <h3>Studio Polish</h3>
+                        <p>Professional headshot enhancement • Clean background • Perfect lighting</p>
                     </div>
                 </div>
                 <div class="compare-card">
                     <div class="compare-images">
                         <img class="compare-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Before">
-                        <span class="compare-label">📸 BEFORE</span>
+                        <span class="compare-label">ORIGINAL</span>
                         <img class="compare-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="After">
-                        <span class="compare-label right">✨ AFTER (AI Edit)</span>
+                        <span class="compare-label right">RETOUCHED</span>
                     </div>
                     <div class="card-content">
-                        <h3>Jessica's Viral Edit</h3>
-                        <p>"Best investment ever! My TikTok followers doubled overnight."</p>
-                        <small><i class="fab fa-tiktok"></i> 3.1M views</small>
+                        <h3>Beauty Retouching</h3>
+                        <p>High-end fashion retouching • Frequency separation • Natural texture</p>
                     </div>
                 </div>
             </div>
@@ -476,19 +482,24 @@
             <h2 class="section-title">What We Do</h2>
             <div class="cards-grid">
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-robot"></i></div>
-                    <h3>AI Portrait Enhance</h3>
-                    <p>Like the TikTok filter but professional — flawless skin, perfect lighting, studio quality.</p>
+                    <div class="service-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Portrait Retouching</h3>
+                    <p>Professional headshots, wedding photos, family portraits — natural and elegant.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-magic"></i></div>
-                    <h3>Viral AI Makeover</h3>
-                    <p>The exact edit everyone's asking for: smooth, glowing, high-end model look.</p>
+                    <div class="service-icon"><i class="fas fa-cut"></i></div>
+                    <h3>Background Removal</h3>
+                    <p>Clean cutouts for e-commerce, products, and studio work — pixel-perfect masking.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-crown"></i></div>
-                    <h3>Celebrity Style Edit</h3>
-                    <p>Make your photos look like magazine covers. High-end retouching, AI-assisted.</p>
+                    <div class="service-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Color Grading</h3>
+                    <p>Cinematic tones, brand consistency, mood enhancement — your vision, perfected.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <h3>Real Estate / Product</h3>
+                    <p>Twilight conversion, HDR blending, perspective correction, object removal.</p>
                 </div>
             </div>
         </div>
@@ -497,7 +508,7 @@
     <!-- TESTIMONIALS -->
     <section>
         <div class="container">
-            <h2 class="section-title">❤️ From Our TikTok Family</h2>
+            <h2 class="section-title">What Clients Say</h2>
             <div class="testimonial-slider">
                 <div id="testimonialContainer" class="testimonial-card"></div>
                 <div class="dot-container" id="dotsContainer"></div>
@@ -508,24 +519,24 @@
     <!-- CONTACT -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">Want Your Own Viral Edit?</h2>
+            <h2 class="section-title">Let's Work Together</h2>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3 style="font-size: 1.8rem;">📲 DM or Call</h3>
+                    <h3 style="font-size: 1.8rem;">Start Your Project</h3>
                     <div class="contact-detail"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/0709298041">+254 709 298 041 (WhatsApp)</a></div>
                     <div class="contact-detail"><i class="fas fa-envelope"></i> <a href="mailto:creedwhite250@gmail.com">creedwhite250@gmail.com</a></div>
                     <div class="contact-detail"><i class="fas fa-phone-alt"></i> <a href="tel:0707356368">📞 +254 707 356 368 (Call / SMS)</a></div>
-                    <div class="contact-detail"><i class="fab fa-tiktok"></i> <span>@precisionpixels — DM for shoutout!</span></div>
-                    <hr style="margin: 20px 0; border-color: #333;">
-                    <p><i class="fas fa-check-circle" style="color:var(--theme-accent);"></i> Free sample edit included</p>
-                    <p><i class="fas fa-clock"></i> 24hr delivery for viral edits</p>
+                    <hr>
+                    <p><i class="fas fa-gem" style="color:var(--theme-accent);"></i> Free sample edit included</p>
+                    <p><i class="fas fa-shield-alt"></i> 100% confidential • Secure delivery</p>
+                    <p><i class="fas fa-sync-alt"></i> Unlimited revisions until you're happy</p>
                 </div>
                 <div class="form-card">
                     <form id="simpleContactForm">
-                        <div class="form-group"><input type="text" id="nameInput" placeholder="Your name *" required></div>
-                        <div class="form-group"><input type="email" id="emailInput" placeholder="Email *" required></div>
-                        <div class="form-group"><textarea rows="4" id="msgInput" placeholder="Send your photo via WhatsApp or email — I'll show you a FREE example!"></textarea></div>
-                        <button type="submit" class="btn-submit"><i class="fab fa-tiktok"></i> Get Free Sample Edit</button>
+                        <div class="form-group"><input type="text" id="nameInput" placeholder="Full name" required></div>
+                        <div class="form-group"><input type="email" id="emailInput" placeholder="Email address" required></div>
+                        <div class="form-group"><textarea rows="4" id="msgInput" placeholder="Tell me about your project — portraits, products, real estate, or something else..."></textarea></div>
+                        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request Free Quote</button>
                     </form>
                 </div>
             </div>
@@ -536,22 +547,21 @@
         <div class="container">
             <div class="logo" style="font-size: 1.5rem;">PRECISION<span style="color:var(--theme-accent);">PIXELS</span></div>
             <div class="footer-links">
-                <a href="#results">Viral Results</a>
+                <a href="#work">Portfolio</a>
                 <a href="#services">Services</a>
-                <a href="#contact">Free Trial</a>
+                <a href="#contact">Free Sample</a>
             </div>
-            <div class="copyright">© 2025 PrecisionPixels — The #1 AI Portrait Edit for TikTok Creators</div>
+            <div class="copyright">© 2025 PrecisionPixels — Professional Photo Editing Studio</div>
         </div>
     </footer>
 
     <script>
-        // Auto color cycling
+        // Auto color cycling (gentle, professional)
         const colors = [
             { accent: "#D4AF37", bg1: "#0B2F5E", bg2: "#1a4a7a" },
-            { accent: "#E67E22", bg1: "#2C3E50", bg2: "#4A627A" },
-            { accent: "#F59E0B", bg1: "#1E1B4B", bg2: "#3B2F6B" },
-            { accent: "#EC4899", bg1: "#1E1B4B", bg2: "#4C1D95" },
-            { accent: "#06B6D4", bg1: "#0F172A", bg2: "#1E3A8A" }
+            { accent: "#C5A028", bg1: "#1E2A3A", bg2: "#2A3F5E" },
+            { accent: "#B8860B", bg1: "#0F172A", bg2: "#1E3A5F" },
+            { accent: "#DAA520", bg1: "#1A2A3A", bg2: "#2D4A6E" }
         ];
         let colorIdx = 0;
         function cycleColor() {
@@ -559,47 +569,83 @@
             document.body.style.background = `linear-gradient(135deg, ${c.bg1} 0%, ${c.bg2} 100%)`;
             document.documentElement.style.setProperty('--theme-accent', c.accent);
             const btns = document.querySelectorAll('.btn-primary, .btn-submit');
-            btns.forEach(btn => btn.style.background = `linear-gradient(135deg, ${c.accent}, #d97706)`);
+            btns.forEach(btn => btn.style.background = `linear-gradient(135deg, ${c.accent}, #b8860b)`);
             const logo = document.querySelector('.logo');
             if(logo) logo.style.background = `linear-gradient(135deg, #fff, ${c.accent})`;
             colorIdx++;
         }
-        setInterval(cycleColor, 5000);
+        setInterval(cycleColor, 6000);
         cycleColor();
 
-        // Testimonials
+        // Testimonials (professional clients)
         const testimonials = [
-            { name: "TikTok @glowupqueen", text: "OMG this edit went viral! 2 million views and everyone asked where I got it done!!!", img: "https://randomuser.me/api/portraits/women/44.jpg" },
-            { name: "TikTok @photog_dreams", text: "Best AI edits I've ever seen. My clients are obsessed. Thank you PrecisionPixels!", img: "https://randomuser.me/api/portraits/men/32.jpg" },
-            { name: "TikTok @model_maya", text: "From 0 to 100k followers after posting my before/after. Insane work 🔥", img: "https://randomuser.me/api/portraits/women/68.jpg" }
+            { name: "Sarah Mitchell", role: "Wedding Photographer", text: "PrecisionPixels delivered flawless retouching on 200+ wedding photos. My clients were blown away. Will definitely work with them again.", img: "https://randomuser.me/api/portraits/women/68.jpg" },
+            { name: "David Chen", role: "E-commerce Brand Owner", text: "The background removal and color correction on our product line was perfect. Fast turnaround, great communication. Highly recommend.", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+            { name: "Jessica Williams", role: "Portrait Artist", text: "I've tried many editors, but PrecisionPixels is exceptional. They understand natural skin texture and lighting better than anyone.", img: "https://randomuser.me/api/portraits/women/44.jpg" }
         ];
         let tIdx = 0;
         const tContainer = document.getElementById('testimonialContainer');
-        const dots = document.getElementById('dotsContainer');
-        function renderT() {
+        const dotsContainer = document.getElementById('dotsContainer');
+        
+        function renderTestimonial() {
             const t = testimonials[tIdx];
-            tContainer.innerHTML = `<img class="testimonial-avatar-img" src="${t.img}"><div class="testimonial-text">“${t.text}”</div><div class="testimonial-name">${t.name}</div>`;
-            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === tIdx));
+            tContainer.innerHTML = `
+                <img class="testimonial-avatar-img" src="${t.img}" alt="${t.name}">
+                <div class="testimonial-text">“${t.text}”</div>
+                <div class="testimonial-name" style="font-size:1.2rem;">${t.name}</div>
+                <div style="color:#94a3b8; font-size:0.85rem;">${t.role}</div>
+            `;
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === tIdx);
+            });
         }
+        
         function buildDots() {
-            dots.innerHTML = '';
+            dotsContainer.innerHTML = '';
             testimonials.forEach((_, i) => {
                 const dot = document.createElement('span');
                 dot.classList.add('dot');
                 if(i === tIdx) dot.classList.add('active');
-                dot.onclick = () => { tIdx = i; renderT(); };
-                dots.appendChild(dot);
+                dot.addEventListener('click', () => {
+                    tIdx = i;
+                    renderTestimonial();
+                });
+                dotsContainer.appendChild(dot);
             });
         }
+        
         buildDots();
-        renderT();
-        setInterval(() => { tIdx = (tIdx+1)%testimonials.length; renderT(); }, 5500);
+        renderTestimonial();
+        setInterval(() => {
+            tIdx = (tIdx + 1) % testimonials.length;
+            renderTestimonial();
+        }, 6000);
 
         // Contact form
         document.getElementById('simpleContactForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert("📸 Thanks! I'll reply within 24h with your FREE sample AI edit. Send your photo via WhatsApp or email!");
+            const name = document.getElementById('nameInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            if(!name || !email) {
+                alert("Please enter your name and email.");
+                return;
+            }
+            alert("Thank you! I'll reply within 24 hours with your free sample edit & quote.");
+            document.getElementById('simpleContactForm').reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
     </script>
 </body>
-</html>                                        
+    </html>                                    
